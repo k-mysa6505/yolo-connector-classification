@@ -14,12 +14,12 @@ def reorganize_project_structure():
     推奨ファイル構造:
 
     /
-    ├─ dataset/                          # 元データ（保持）
+    ├─ dataset/                          # 元データ
     │  ├─ images/                        # 元画像
     │  ├─ xmls/                          # 元アノテーション
     │  └─ data.yaml                      # 既存設定ファイル
     │
-    ├─ connector_dataset/                # YOLOv8用データセット（新規作成）
+    ├─ connector_dataset/                # YOLOv8用データセット
     │  ├─ train/
     │  │  ├─ images/
     │  │  └─ labels/
@@ -32,10 +32,10 @@ def reorganize_project_structure():
     │  └─ data.yaml                      # YOLOv8用設定
     │
     ├─ scripts/                          # 学習・推論スクリプト
-    │  ├─ train_model.py                 # 学習スクリプト
-    │  ├─ evaluate_model.py              # 評価スクリプト
+    │  ├─ train.py                       # 学習スクリプト
+    │  ├─ evaluate.py                    # 評価スクリプト
     │  ├─ inference.py                   # 推論スクリプト
-    │  └─ analysis_report.py             # 分析レポート
+    │  └─ analysis.py                    # 分析レポート
     │
     ├─ models/                           # 学習済みモデル保存
     │  └─ (学習後に生成)
@@ -118,7 +118,7 @@ def convert_annotations_to_yolo(source_annotations_dir, source_images_dir):
         return None
 
 def split_and_organize_dataset(source_images_dir, source_labels_dir,
-                              train_ratio=0.7, val_ratio=0.2, test_ratio=0.1):
+                                train_ratio=0.7, val_ratio=0.2, test_ratio=0.1):
     """
     データセットを分割してYOLO形式で整理
     """
@@ -206,10 +206,10 @@ def copy_scripts():
     """
 
     scripts_info = {
-        'train_model.py': 'YOLOv8学習スクリプト',
-        'evaluate_model.py': '推論・評価スクリプト',
+        'train.py': 'YOLOv8学習スクリプト',
+        'evaluate.py': '推論・評価スクリプト',
         'connector_detection.py': '提出用統合スクリプト',
-        'analysis_report.py': 'レポート用分析スクリプト'
+        'analysis.py': 'レポート用分析スクリプト'
     }
 
     print("\n以下のスクリプトを手動で作成してください：")
@@ -240,7 +240,7 @@ connector_dataset/
 inference_results/
 detection_results/
 evaluation_report/
-analysis_report/
+analysis/
 
 # Temporary files
 *.tmp
@@ -294,7 +294,7 @@ def main():
     print("\n次のステップ:")
     print("1. 前回提供したスクリプトを適切なディレクトリに配置")
     print("2. requirements.txtを更新してYOLOv8関連パッケージを追加")
-    print("3. scripts/train_model.py を実行して学習開始")
+    print("3. scripts/train.py を実行して学習開始")
 
     # 推奨構造を再表示
     reorganize_project_structure()

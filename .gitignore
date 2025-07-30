@@ -15,7 +15,7 @@ connector_dataset/
 inference_results/
 detection_results/
 evaluation_report/
-analysis_report/
+analysis/
 
 # Temporary files
 *.tmp
