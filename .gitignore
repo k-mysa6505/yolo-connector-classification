@@ -1,2 +1,22 @@
 dataset/
 labelImg/
+
+# YOLOv8 specific
+models/
+results/
+runs/
+*.pt
+*.onnx
+
+# Dataset (optional - comment out if you want to track dataset)
+connector_dataset/
+
+# Inference outputs
+inference_results/
+detection_results/
+evaluation_report/
+analysis_report/
+
+# Temporary files
+*.tmp
+*.cache
